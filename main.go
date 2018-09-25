@@ -47,13 +47,12 @@ func newsAggHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	p := NewsAggPage{Title: "Amazing News", News: news_map}
+	p := NewsAggPage{Title: "Washington Post News", News: news_map}
 	t, _ := template.ParseFiles("basictemplating.html")
 	fmt.Println(t.Execute(w, p))
 }
 
 func main() {
-	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/", newsAggHandler)
 	http.ListenAndServe(":8000", nil)
 }
